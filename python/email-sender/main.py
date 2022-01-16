@@ -11,7 +11,7 @@ import smtplib
 from email.mime.text import MIMEText
 from email.header import Header
 
-with open("email-identities-nosync.json", 'r', encoding='utf-8') as jf:
+with open("email-identities-2-nosync.json", 'r', encoding='utf-8') as jf:
     email_info = json.load(jf)
     email_addr = email_info.get('username', None)
     email_psswd = email_info.get('password', None)
@@ -24,7 +24,7 @@ message['To'] = Header(target_email.split('@')[0], 'utf-8')  # 接收者
 subject = 'Python SMTP Email Test'
 message['Subject'] = Header(subject, 'utf-8')
 
-connection = smtplib.SMTP("smtp.qq.com")
+connection = smtplib.SMTP(email_info['smtp_addr'])
 connection.starttls()
 connection.login(user=email_addr, password=email_psswd)
 connection.sendmail(from_addr=email_addr, to_addrs=target_email, msg=message.as_string())
