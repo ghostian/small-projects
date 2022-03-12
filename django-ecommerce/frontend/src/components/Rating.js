@@ -48,6 +48,8 @@ function Rating({value, text, color}) {
                             : 'far fa-star'
                 }></i>
             </span>
+
+            <span>{text && text}</span>
         </div>
     )
 }
