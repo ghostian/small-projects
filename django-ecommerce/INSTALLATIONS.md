@@ -16,3 +16,9 @@ npm start
 ```shell
 npm install react-bootstrap bootstrap
 ```
+
+## Router
+
+```shell
+npm install react-router-dom react-router-bootstrap
+```
