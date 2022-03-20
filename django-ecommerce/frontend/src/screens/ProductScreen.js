@@ -1,12 +1,25 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Link, useParams} from 'react-router-dom'
 import {Button, Card, Col, Image, ListGroup, Row} from "react-bootstrap";
-import products from '../products'
 import Rating from '../components/Rating'
+import axios from "axios";
+
 
 function ProductScreen() {
     const match = useParams();
-    const product = products.find((p) => p._id === match.id);
+
+    const [product, setProduct] = useState([])
+
+    useEffect(() => {
+        async function fetchProduct() {
+            const {data} = await axios.get(`/api/products/${match.id}`)
+            setProduct(data)
+        }
+
+        fetchProduct()
+    }, [])
+
+    // const product = products.find((p) => p._id === match.id);
     return (
         <div>
             <Link to='/' className='btn btn-light my-3'>Go back</Link>
@@ -57,7 +70,8 @@ function ProductScreen() {
                             </ListGroup.Item>
 
                             <ListGroup.Item>
-                                <Button className='btn-block' disabled={product.countInStock == 0} type='button'> Add to Cart</Button>
+                                <Button className='btn-block' disabled={product.countInStock === 0} type='button'> Add
+                                    to Cart</Button>
                             </ListGroup.Item>
                         </ListGroup>
                     </Card>

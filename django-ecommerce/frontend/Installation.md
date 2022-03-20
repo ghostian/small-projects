@@ -22,3 +22,9 @@ npm install react-bootstrap bootstrap
 ```shell
 npm install react-router-dom react-router-bootstrap
 ```
+
+## Fetch data
+
+```shell
+npm install axios
+```
