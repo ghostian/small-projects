@@ -28,3 +28,9 @@ npm install react-router-dom react-router-bootstrap
 ```shell
 npm install axios
 ```
+
+## Redux
+
+```shell
+npm install redux react-redux redux-thunk redux-devtools-extension
+```
